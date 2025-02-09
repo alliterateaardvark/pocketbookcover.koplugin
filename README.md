@@ -10,4 +10,4 @@ To use the book cover on the sleep screen, create the following directory on you
 ## Usage
 
 After you've installed the KOReader plugin, syncing the book cover will happen silently.
-Please note this is only affects "Power-Off logo" option. It won't affect the "Boot logo" option.
+Please note this only affects "Power-Off logo" option. It won't affect the "Boot logo" option.
