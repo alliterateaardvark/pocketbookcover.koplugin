@@ -13,7 +13,6 @@ local PocketbookCover = WidgetContainer:extend{
 
 function PocketbookCover:update(title, page)
     local image, _ = FileManagerBookInfo:getCoverImage(self.ui.document)
-    if not image then return end
 
     local screenWidth = Screen:getWidth()
     local screenHeight = Screen:getHeight()
@@ -40,10 +39,8 @@ function PocketbookCover:update(title, page)
     end
 
     local imageScaled = RenderImage:scaleBlitBuffer(image, scaledWidth, scaledHeight)
-    if not imageScaled then return end
 
     local backgroundBuffer = Blitbuffer.new(screenWidth, screenHeight, image:getType())
-    if not backgroundBuffer then return end
 
     backgroundBuffer:fill(Blitbuffer.COLOR_BLACK)
     local offsetX = math.floor((screenWidth - scaledWidth) / 2)
@@ -57,23 +54,7 @@ function PocketbookCover:update(title, page)
     backgroundBuffer:free()
 end
 
-function PocketbookCover:onReaderReady(doc)
-    self:update()
-end
-
-function PocketbookCover:onCloseDocument()
-    self:update()
-end
-
-function PocketbookCover:onEndOfBook()
-    self:update()
-end
-
-function PocketbookCover:onSuspend()
-    self:update()
-end
-
-function PocketbookCover:onResume()
+function PocketbookCover:onReaderReady()
     self:update()
 end
 
